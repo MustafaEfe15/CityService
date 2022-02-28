@@ -51,9 +51,18 @@ public class CityController {
 		return new ResponseEntity<City>(result, OK);
 	}
 
-	@PostMapping
+	@PostMapping("/create1")
 	@JsonView(City.class)
-	public ResponseEntity createCity(@RequestBody City newCity) {
+	public ResponseEntity<City> createCity(@RequestBody City newCity) {
+		newCity.setCreatedDate(new Date());
+		allCities.add(newCity);
+		
+		return new ResponseEntity<City>(newCity, CREATED);
+	}
+	
+	@PostMapping("/create2")
+	@JsonView(City.class)
+	public ResponseEntity<City> createCity2(@RequestBody City newCity) {
 		newCity.setCreatedDate(new Date());
 		allCities.add(newCity);
 		
