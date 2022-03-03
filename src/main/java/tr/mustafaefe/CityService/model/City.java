@@ -3,6 +3,8 @@ package tr.mustafaefe.CityService.model;
 import java.io.Serializable;
 import java.util.Date;
 
+import org.springframework.data.annotation.Id;
+
 import com.fasterxml.jackson.annotation.JsonView;
 
 import lombok.AllArgsConstructor;
@@ -14,12 +16,13 @@ import lombok.NoArgsConstructor;
 //@AllArgsConstructor
 public class City {
 
+	@Id
 	@JsonView(City.class)
 	private String id;
 	@JsonView(City.class)
 	private String name;
 	@JsonView(City.class)
-	private Date createdDate;
+	private Date createdDate = new Date();
 
 	public City(String id, String name, Date createdDate) {
 		super();
